@@ -20,7 +20,7 @@ type metricValue = {
 const getMetrics = (state: IState) => state.metrics;
 
 export default () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch();  
   const selectedMetrics = useSelector(getMetrics);
   const [metricsList, setMetricsList] = useState([]);
   const [result] = useQuery({ query });
@@ -32,7 +32,8 @@ export default () => {
 
   useEffect(() => {
     if (error) {
-
+      dispatch(actions.metricsApiErrorReceived({ error: error.message }));
+      return;
     }
     if (!data) return;
     setMetricsList(data.getMetrics.map((item: string) => ({

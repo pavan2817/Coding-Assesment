@@ -63,7 +63,10 @@ export default () => {
           anchor: 'bottom-right',
           direction: 'column',
           justify: false,
-
+          translateX: 100,
+          translateY: 0,
+          itemsSpacing: 0,
+          itemDirection: 'left-to-right',
           itemWidth: 80,
           itemHeight: 20,
           itemOpacity: 0.75,

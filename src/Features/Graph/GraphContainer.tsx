@@ -45,7 +45,7 @@ export default () => {
     query,
     variables: {
       input: metrics.map(metric => ({
-
+        metricName: metric,
         after: time,
       })),
     },
@@ -53,7 +53,8 @@ export default () => {
   const { data } = result;
 
   useEffect(() => {
-
+    if (!data) return;
+    dispatch(actions.multipleMeasurementsReceived(data.getMultipleMeasurements));
   }, [data, dispatch]);
 
   return (
