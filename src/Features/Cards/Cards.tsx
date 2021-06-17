@@ -41,7 +41,12 @@ export default () => {
     if (error) {
       dispatch(actions.measurementsApiErrorReceived({ error: error.message }));
     }
-
+    if (metrics.length > 0 && data) {
+      const index = metrics.findIndex(item => item === data.newMeasurement.metric);
+      if (index > -1) {
+        dispatch(actions.singleMeasurementReceived(data.newMeasurement));
+      }
+    }
   }, [metrics, data, error, dispatch]);
 
   return (

@@ -27,7 +27,8 @@ const slice = createSlice({
       const { description, locationName, temperatureinCelsius } = action.payload;
       state.temperatureinCelsius = temperatureinCelsius;
       state.temperatureinFahrenheit = toF(temperatureinCelsius);
-
+      state.description = description;
+      state.locationName = locationName;
     },
     weatherApiErrorReceived: (state, action: PayloadAction<ApiErrorAction>) => state,
   },
